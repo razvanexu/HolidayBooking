@@ -139,6 +139,7 @@ https://www.tooplate.com/view/2095-level
         <script th:src="@{/js/datepicker.min.js}"></script>                <!-- https://github.com/qodesmith/datepicker -->
         <script th:src="@{/js/jquery.singlePageNav.min.js}"></script>      <!-- Single Page Nav (https://github.com/ChrisWojcik/single-page-nav) -->
         <script th:src="@{/slick/slick.min.js}"></script>                  <!-- http://kenwheeler.github.io/slick/ -->
+        <script th:inline="javascript">var googleMapsKey = /*[[${@environment.getProperty('google.maps.key')}]]*/ '';</script>
         <script>
 
             /* Google map
@@ -171,7 +172,7 @@ https://www.tooplate.com/view/2095-level
             function loadGoogleMap(){
                 var script = document.createElement('script');
                 script.type = 'text/javascript';
-                script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDVWt4rJfibfsEDvcuaChUaZRS5NXey1Cs&v=3.exp&sensor=false&' + 'callback=initialize';
+                script.src = 'https://maps.googleapis.com/maps/api/js?key=' + encodeURIComponent(googleMapsKey) + '&v=3.exp&sensor=false&' + 'callback=initialize';
                 document.body.appendChild(script);
             }
 
